@@ -1,0 +1,61 @@
+\begin{table}[]
+    \centering
+    \caption{Two examples of three baselines' predictions and our prediction on NewsQA.}
+    \begin{tabular}{p{56pt}|p{280pt}}
+        %  \thickhline
+         \hline
+         \multicolumn{2}{c}{\bfseries Example 1} \\
+         \hline
+         Passage & (CNN) -- President Barack Obama spoke with Egypt's president moments after Hosni Mubarak addressed his country, telling the Egyptian that \textcolor[rgb]{1,0,0.2}{\itshape he must make good on his promises} and avoid a violent response to the thousands of protesters in the streets. (...) \\
+         \hline
+         Token nums & 2,036 \\
+         \hline
+         Question & What did Obama say to Mubarak? \\
+         \hline
+         Answer & he must make good on his promises \\
+         \hline
+        %  Our pred & \textcolor[rgb]{1,0.4,0.3}{he must make good on his promises and avoid a violent response(\Checkmark)} \\
+        %  \hline
+        %  BERT's & \textcolor[rgb]{0.4,0.7,0.9}{I just spoke to him after his speech(\XSolidBrush)} \\
+        %  \hline
+        %  ALBERT's & \textcolor[rgb]{0.4,0.7,0.9}{It is very important that people have mechanisms in order(\XSolidBrush)} \\
+        %  \hline
+        %  Longformer's & \textcolor[rgb]{0.4,0.7,0.9}{he must make good on his promises and avoid a violent response(\Checkmark)} \\
+         Our pred & \textcolor[rgb]{1,0.4,0.3}{he must make good on his promises and avoid a violent response (True)} \\
+         \hline
+         BERT's & \textcolor[rgb]{0.4,0.7,0.9}{I just spoke to him after his speech (False)} \\
+         \hline
+         ALBERT's & \textcolor[rgb]{0.4,0.7,0.9}{It is very important that people have mechanisms in order (False)} \\
+         \hline
+         Longformer's & \textcolor[rgb]{0.4,0.7,0.9}{he must make good on his promises and avoid a violent response (True)} \\
+         \hline
+         \hline
+         \multicolumn{2}{c}{\bfseries Example 2} \\
+         \hline
+         Passage & (...) Tucked away in the verdant hills west of St. Andrews, Kingarrock Hickory Golf Course (greens fee, \$40 for nine holes and \$55 for 18) \textcolor[rgb]{1,0,0.2}{\itshape is a nine-hole, 2,022-yard country estate course that is played exclusively with antiquated equipment}. (...) \\
+         \hline
+         Token nums & 2,288 \\
+         \hline
+         Question & What is Kingarrock Hickory? \\
+         \hline
+         Answer & is a nine-hole, 2,022-yard country estate course that is played exclusively with antiquated equipment \\
+         \hline
+        %  Our pred & \textcolor[rgb]{1,0.4,0.3}{a nine-hole, 2,022-yard country estate course that is played exclusively with antiquated equipment(\Checkmark)} \\
+        %  \hline
+        %  BERT's & \textcolor[rgb]{0.4,0.7,0.9}{the kind of place that can change the way one thinks about golf(\XSolidBrush)} \\
+        %  \hline
+        %  ALBERT's & \textcolor[rgb]{0.4,0.7,0.9}{Golf Course(\Checkmark)} \\
+        %  \hline
+        %  Longformer's & \textcolor[rgb]{0.4,0.7,0.9}{Top hotel penthouses(\XSolidBrush)} \\
+         Our pred & \textcolor[rgb]{1,0.4,0.3}{a nine-hole, 2,022-yard country estate course that is played exclusively with antiquated equipment (True)} \\
+         \hline
+         BERT's & \textcolor[rgb]{0.4,0.7,0.9}{the kind of place that can change the way one thinks about golf (False)} \\
+         \hline
+         ALBERT's & \textcolor[rgb]{0.4,0.7,0.9}{Golf Course (True)} \\
+         \hline
+         Longformer's & \textcolor[rgb]{0.4,0.7,0.9}{Top hotel penthouses (False)} \\
+        %  \thickhline
+         \hline
+    \end{tabular}
+    \label{3-2}
+\end{table}

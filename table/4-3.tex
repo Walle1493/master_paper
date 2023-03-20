@@ -1,0 +1,21 @@
+\begin{table}\scriptsize
+    \centering
+    \begin{tabular}{ll|ll|ll|ll}
+    \hline
+    {\bfseries Model} & {\bfseries Acc} & {\bfseries Model} & {\bfseries Acc} & {\bfseries Model} & {\bfseries Acc} & {\bfseries Model} & {\bfseries Acc} \\
+    \hline
+    Baseline & 56.7 & Baseline & 56.7 & Baseline & 56.7 & Baseline & 39.6 \\
+    \hline
+    CoL & {\bfseries 60.1} & CoL & 60.1 & CoL & 60.1 & CoL & {\bfseries 40.8} \\
+    \hline
+    $\ $ question query & 58.9 & $\ $ w/ DiF & {\bfseries 60.9} & $\ $ w/ self-attention & 60.4 & $\ $ in-batch negatives & 37.1 \\
+    $\ $ in-batch negatives & 59.4 & $\ $ KL Loss & 57.0 & $\ \ $ context masked & 60.4 & \\
+    & & & & $\ $ w/ transformer & {\bfseries 61.0} & & \\
+    & & & & $\ $ w/ transformer*2 & 60.8 & & \\
+    & & & & $\ $ w/ modified transformer & 58.9 & & \\
+    \hline
+    \end{tabular}
+    \caption{\label{tab:4-3}
+    Ablation study on contrastive learning module, distractive factor, and in-sample attention mechanism on the development set of QuALITY.
+    }
+\end{table}

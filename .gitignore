@@ -1,0 +1,10 @@
+*.aux
+*.log
+*.blg
+*.toc
+*.bbl
+*.out
+*.thm
+*.synctex
+.DS_Store
+main.pdf

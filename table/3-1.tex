@@ -1,0 +1,40 @@
+\begin{table}[]
+    \centering
+    \caption{The performances of LT-MRC models on NewsQA as well as our models' performances compared to their corresponding pre-trained language models.}
+    \begin{tabular}{p{140pt}p{24pt}<{\centering}p{24pt}<{\centering}p{24pt}<{\centering}p{24pt}<{\centering}}
+        %  \thickhline
+         \hline
+         {\bfseries Model} & \multicolumn{2}{c}{\bfseries Dev} & \multicolumn{2}{c}{\bfseries Test} \\
+         & {\bfseries F1} & {\bfseries EM} & {\bfseries F1} & {\bfseries EM} \\
+         \hline
+         Match-LSTM~\cite{wang2015learning} & 49.6 & 34.4 & 50.0 & 34.9 \\
+         BiDAF~\cite{seo2016bidirectional} & - & - & 52.3 & 37.1 \\
+         AMANDA~\cite{kundu2018question} & 63.3 & 48.8 & 63.7 & 48.4 \\
+         DecaProp~\cite{tay2018densely} & 65.7 & 52.5 & 66.3 & 53.1 \\
+         Longformer-base~\cite{beltagy2020longformer} & 68.1 & 58.3 & 68.1 & 58.1 \\
+         CogLTX~\cite{ding2020cogltx} & - & - & 70.1 & 55.2 \\
+         \hline
+         \hline
+         BERT-base~\cite{devlin2018bert} & 65.6 & 56.3 & 65.4 & 55.2 \\
+         $\ $ + ThinkTwice(descending order) & 66.6 & 57.8 & 65.8 & 55.6 \\
+         $\ $ + ThinkTwice(ours) & {\bfseries 68.5} & {\bfseries58.8} & {\bfseries68.6} & {\bfseries57.7} \\
+         \hline
+         RoBERTa-base~\cite{liu2019roberta} & 63.7 & 53.5 & 63.2 & 53.1 \\
+         $\ $ + ThinkTwice(ours) & {\bfseries67.7} & {\bfseries58.6} & {\bfseries67.7} & {\bfseries58.4} \\
+         \hline
+         ALBERT-base~\cite{lan2019albert} & 68.1 & 58.2 & 68.0 & 58.0 \\
+         $\ $ + ThinkTwice(ours) & {\bfseries68.7} & {\bfseries59.1} & {\bfseries68.6} & {\bfseries58.8} \\
+         \hline
+         SpanBERT-base~\cite{joshi2020spanbert} & 67.7 & 57.1 & 67.5 & 56.2 \\
+         $\ $ + ThinkTwice(ours) & {\bfseries69.9} & {\bfseries59.8} & {\bfseries69.7} & {\bfseries59.4} \\
+         \hline
+         BERT-large & 68.9 & 59.2 & 68.8 & 58.6 \\
+         $\ $ + ThinkTwice(ours) & {\bfseries70.1} & {\bfseries59.5} & {\bfseries69.8} & {\bfseries59.4} \\
+         \hline
+         SpanBERT-large & 71.2 & 61.8 & 70.9 & 59.8 \\
+         $\ $ + ThinkTwice(ours) & {\bfseries72.1} & {\bfseries62.2} & {\bfseries71.5} & {\bfseries61.0} \\
+        %  \thickhline
+         \hline
+    \end{tabular}
+    \label{tab:3-1}
+\end{table}

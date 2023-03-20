@@ -1,0 +1,52 @@
+% \begin{algorithm}\small
+%   \KwIn{Passage $p=[s_1, s_2, ..., s_n]$, Question $q$, Options $O=[o_1, o_2, ..., o_m]$}
+%   \KwOut{Context}
+%   \eIf{Input (x) belongs to p}{
+%     $E_x$ = ContextEncoder($x$)\;
+%     }{
+%     $E_x$ = QuestionEncoder($x$)\;
+%     % $E_o$ = QuestionEncoder($o$)\;
+%     }
+%   \For{$o_i$ in $O$}{
+%     \For{$s_j$ in $p$}{
+%       sim($o_i$, $s_j$) = -L^2_{dist}($E_{o_i}$, $E_{s_j}$)
+%       }
+%     Select: Top-k relevant sentences $s_{i_1}, s_{i_2}, ..., s_{i_k}$\;
+% 	Select: Their previous and next sentences $s_{i_1}^{prev}, s_{i_1}^{next}, ..., s_{i_k}^{prev}, s_{i_k}^{next}$\;
+% 	Context $\gets$ Selected sentences\;
+% 	}
+%   \For{$s_j$ in $p$}{
+%     sim($q$, $s_j$) = -L^2_{dist}($E_q$, $E_{s_j}$)
+% 	}
+%   Select: Top-n relevant sentences $s_{j_1}, s_{j_2}, ..., s_{j_n}$\;
+%   Context $\gets$ Selected sentences\;
+%   Context.unique().sort().to\_str()\;
+%   \caption{\label{alg:algorithm}The Extracting Algorithm}
+% \end{algorithm}
+
+
+\begin{algorithm}\small
+  % \KwIn{Passage $p=[s_1, s_2, ..., s_n]$, Question $q$, Options $O=[o_1, o_2, ..., o_m]$}
+  % \KwOut{Context}
+  % \eIf{Input (x) belongs to p}{
+  %   $E_x$ = ContextEncoder($x$)\;
+  %   }{
+  %   $E_x$ = QuestionEncoder($x$)\;
+  %   % $E_o$ = QuestionEncoder($o$)\;
+  %   }
+  % \For{$o_i$ in $O$}{
+  %   \For{$s_j$ in $p$}{
+  %     sim($o_i$, $s_j$) = -L^2_{dist}($E_{o_i}$, $E_{s_j}$)
+  %     }
+  %   Select: Top-k relevant sentences $s_{i_1}, s_{i_2}, ..., s_{i_k}$\;
+	% Select: Their previous and next sentences $s_{i_1}^{prev}, s_{i_1}^{next}, ..., s_{i_k}^{prev}, s_{i_k}^{next}$\;
+	% Context $\gets$ Selected sentences\;
+	% }
+  % \For{$s_j$ in $p$}{
+  %   sim($q$, $s_j$) = -L^2_{dist}($E_q$, $E_{s_j}$)
+	% }
+  % Select: Top-n relevant sentences $s_{j_1}, s_{j_2}, ..., s_{j_n}$\;
+  % Context $\gets$ Selected sentences\;
+  % Context.unique().sort().to\_str()\;
+  \caption{\label{alg:algorithm}The Extracting Algorithm}
+\end{algorithm}
