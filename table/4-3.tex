@@ -1,21 +1,30 @@
-\begin{table}\scriptsize
+\begin{table}[htbp]\scriptsize
     \centering
-    \begin{tabular}{ll|ll|ll|ll}
+    \begin{tabular}{lcccc}
+    % \thickhline
     \hline
-    {\bfseries Model} & {\bfseries Acc} & {\bfseries Model} & {\bfseries Acc} & {\bfseries Model} & {\bfseries Acc} & {\bfseries Model} & {\bfseries Acc} \\
+         & \multicolumn{2}{c}{\bfseries QuALITY} & \multicolumn{2}{c}{\bfseries RACE} \\
+    {\bfseries 模型} & {\bfseries 开发集} & {\bfseries 测试集} & {\bfseries 开发集} & {\bfseries 测试集} \\
     \hline
-    Baseline & 56.7 & Baseline & 56.7 & Baseline & 56.7 & Baseline & 39.6 \\
+    Longformer-base \cite{beltagy2020longformer} & 38.1/32.8 & 39.5/35.3 & - & - \\
+    DPR \& DeBERTaV3-large \cite{pang2021quality} & 56.7*/48.6* & 55.4/46.1 & - & - \\
     \hline
-    CoL & {\bfseries 60.1} & CoL & 60.1 & CoL & 60.1 & CoL & {\bfseries 40.8} \\
+    % BERT-base \cite{devlin2018bert} & - & - & 64.6 (-/-) & 65.0 (71.1/62.3) \\
+    % ALBERT-base \cite{zhao2022reference} & - & - & 67.9 (72.3/65.7) & 67.2 (72.1/65.2) \\
+    DeBERTaV3-base \cite{he2021debertav3} & - & - & 81.1 (85.2/79.4) & 79.7 (82.8/78.4) \\
+    XLNet-large \cite{yang2019xlnet} & - & - & 80.1 (-/-) & 81.8 (85.5/80.2) \\
+    RoBERTa-large \cite{liu2019roberta} & - & - & - (-/-) & 83.2 (86.5/81.8) \\
+    DeBERTaV3-large \cite{he2021debertav3} & - & - & 88.3* (91.4*/87.0*) & 87.5* (90.5*/86.8*) \\
     \hline
-    $\ $ question query & 58.9 & $\ $ w/ DiF & {\bfseries 60.9} & $\ $ w/ self-attention & 60.4 & $\ $ in-batch negatives & 37.1 \\
-    $\ $ in-batch negatives & 59.4 & $\ $ KL Loss & 57.0 & $\ \ $ context masked & 60.4 & \\
-    & & & & $\ $ w/ transformer & {\bfseries 61.0} & & \\
-    & & & & $\ $ w/ transformer*2 & 60.8 & & \\
-    & & & & $\ $ w/ modified transformer & 58.9 & & \\
+    CoL (DeBERTaV3-base) & -/- & -/- & 82.9 (87.3/81.0) & 81.6 (85.3/80.1) \\
+    CoLISA (DeBERTaV3-base) & -/- & -/- & 83.2 (86.4/81.9) & 81.6 (84.6/80.4) \\
+    CoL (DeBERTaV3-large) & 60.1/52.6 & 62.1/54.3 & 88.6 ({\bfseries 91.6}/87.3) & {\bfseries 87.9} ({\bfseries 90.8}/86.9) \\
+    CoLISA (DeBERTaV3-large) & {\bfseries 61.7}/{\bfseries 53.6} & {\bfseries 62.3}/{\bfseries 54.7} & {\bfseries 88.8} (91.1/{\bfseries 87.8}) & 87.8 (90.0/{\bfseries 87.0}) \\
+    % \thickhline
     \hline
     \end{tabular}
     \caption{\label{tab:4-3}
-    Ablation study on contrastive learning module, distractive factor, and in-sample attention mechanism on the development set of QuALITY.
+    QuALITY（全部/困难）和RACE（中考/高考）数据集上，开发集和测试集的ACC实验结果。本节在QuALITY数据集上进行了DPR和DeBERTaV3架构基线的重新实现（标有*），表现明显优于QuALITY原文中的记录（53.6/47.4）。DeBERTaV3-large的结果也是如此。而其他基线结果则来自相关研究或相关排行榜。在RACE数据集上的实验不需要基于DPR的检索器和干扰因素。在训练过程中，QuALITY数据集中的模型是中间经过RACE数据集训练并在QuALITY上进行微调的。
     }
 \end{table}
+

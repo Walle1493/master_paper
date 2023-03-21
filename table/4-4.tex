@@ -1,21 +1,22 @@
-\begin{table}\scriptsize
+\begin{table}[htbp]\scriptsize
     \centering
     \begin{tabular}{ll|ll|ll|ll}
     \hline
-    {\bfseries Model} & {\bfseries Acc} & {\bfseries Model} & {\bfseries Acc} & {\bfseries Model} & {\bfseries Acc} & {\bfseries Model} & {\bfseries Acc} \\
+    {\bfseries 模型} & {\bfseries ACC} & {\bfseries 模型} & {\bfseries ACC} & {\bfseries 模型} & {\bfseries ACC} & {\bfseries 模型} & {\bfseries ACC} \\
     \hline
-    Baseline & 56.7 & Baseline & 56.7 & Baseline & 56.7 & Baseline & 39.6 \\
+    基线 & 56.7 & 基线 & 56.7 & 基线 & 56.7 & 基线 & 39.6 \\
     \hline
     CoL & {\bfseries 60.1} & CoL & 60.1 & CoL & 60.1 & CoL & {\bfseries 40.8} \\
     \hline
-    $\ $ question query & 58.9 & $\ $ w/ DiF & {\bfseries 60.9} & $\ $ w/ self-attention & 60.4 & $\ $ in-batch negatives & 37.1 \\
-    $\ $ in-batch negatives & 59.4 & $\ $ KL Loss & 57.0 & $\ \ $ context masked & 60.4 & \\
-    & & & & $\ $ w/ transformer & {\bfseries 61.0} & & \\
-    & & & & $\ $ w/ transformer*2 & 60.8 & & \\
-    & & & & $\ $ w/ modified transformer & 58.9 & & \\
+    $\ $ 用问题作为检索 & 58.9 & $\ $ 应用干扰因子 & {\bfseries 60.9} & $\ $ 应用自注意力 & 60.4 & $\ $ 应用样本内负例 & 37.1 \\
+    $\ $ 应用样本内负例 & 59.4 & $\ $ 应用KL损失 & 57.0 & $\ \ $ 上下文遮蔽 & 60.4 & \\
+    & & & & $\ $ 应用transformer & {\bfseries 61.0} & & \\
+    & & & & $\ $ 应用两层transformer & 60.8 & & \\
+    & & & & $\ $ 应用改动的transformer & 58.9 & & \\
     \hline
     \end{tabular}
     \caption{\label{tab:4-4}
-    Ablation study on contrastive learning module, distractive factor, and in-sample attention mechanism on the development set of QuALITY.
+    QuALITY数据集的开发集上，关于对比学习模块，干扰抑制，样本内注意力机制的消融实验。
+    % Ablation study on contrastive learning module, distractive factor, and in-sample attention mechanism on the development set of QuALITY.
     }
 \end{table}

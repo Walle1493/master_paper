@@ -1,10 +1,10 @@
-\begin{table}[]
+\begin{table}[htbp]
     \centering
-    \caption{The performances of LT-MRC models on NewsQA as well as our models' performances compared to their corresponding pre-trained language models.}
-    \begin{tabular}{p{140pt}p{24pt}<{\centering}p{24pt}<{\centering}p{24pt}<{\centering}p{24pt}<{\centering}}
+    \caption{长文本阅读理解模型在NewsQA上的表现，以及CoLISA和对应的预训练语言模型在NewsQA上的表现。}
+    \begin{tabular}{lp{24pt}<{\centering}p{24pt}<{\centering}p{24pt}<{\centering}p{24pt}<{\centering}}
         %  \thickhline
          \hline
-         {\bfseries Model} & \multicolumn{2}{c}{\bfseries Dev} & \multicolumn{2}{c}{\bfseries Test} \\
+         {\bfseries 模型} & \multicolumn{2}{c}{\bfseries 开发集} & \multicolumn{2}{c}{\bfseries 测试集} \\
          & {\bfseries F1} & {\bfseries EM} & {\bfseries F1} & {\bfseries EM} \\
          \hline
          Match-LSTM~\cite{wang2015learning} & 49.6 & 34.4 & 50.0 & 34.9 \\

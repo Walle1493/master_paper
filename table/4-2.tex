@@ -24,29 +24,40 @@
 %   \caption{\label{alg:algorithm}The Extracting Algorithm}
 % \end{algorithm}
 
+\floatname{algorithm}{算法}  
+\renewcommand{\algorithmicrequire}{\textbf{输入:}}  
+\renewcommand{\algorithmicensure}{\textbf{输出:}} 
 
-\begin{algorithm}\small
-  % \KwIn{Passage $p=[s_1, s_2, ..., s_n]$, Question $q$, Options $O=[o_1, o_2, ..., o_m]$}
-  % \KwOut{Context}
-  % \eIf{Input (x) belongs to p}{
-  %   $E_x$ = ContextEncoder($x$)\;
-  %   }{
-  %   $E_x$ = QuestionEncoder($x$)\;
-  %   % $E_o$ = QuestionEncoder($o$)\;
-  %   }
-  % \For{$o_i$ in $O$}{
-  %   \For{$s_j$ in $p$}{
-  %     sim($o_i$, $s_j$) = -L^2_{dist}($E_{o_i}$, $E_{s_j}$)
-  %     }
-  %   Select: Top-k relevant sentences $s_{i_1}, s_{i_2}, ..., s_{i_k}$\;
-	% Select: Their previous and next sentences $s_{i_1}^{prev}, s_{i_1}^{next}, ..., s_{i_k}^{prev}, s_{i_k}^{next}$\;
-	% Context $\gets$ Selected sentences\;
-	% }
-  % \For{$s_j$ in $p$}{
-  %   sim($q$, $s_j$) = -L^2_{dist}($E_q$, $E_{s_j}$)
-	% }
-  % Select: Top-n relevant sentences $s_{j_1}, s_{j_2}, ..., s_{j_n}$\;
-  % Context $\gets$ Selected sentences\;
-  % Context.unique().sort().to\_str()\;
-  \caption{\label{alg:algorithm}The Extracting Algorithm}
+\begin{algorithm}
+	\caption{\textbf{长文本抽取算法}} 
+	\label{alg:4-2}
+	\begin{algorithmic}
+		% 输入
+		\REQUIRE 文章 $p=[s_1, s_2, ..., s_n]$, 问题 $q$, 选项 $O=[o_1, o_2, ..., o_m]$
+		% 输出
+		\ENSURE 上下文
+      选择编码器
+      \IF{$x \in p$}
+        \STATE \quad $E_x = ContextEncoder(x)$
+      \ELSE
+        \STATE \quad $E_x = QuestionEncoder(x)$
+      \ENDIF
+      % 计算相似度
+      \FOR{$o_i \in O, s_j \in p$}
+      % \FOR{$s_j \in p$}
+        \STATE \quad $sim(o_i, s_j) = -L^2_{dist}(E_{o_i}, E_{s_j})$\;
+      \ENDFOR
+      \STATE 选择: 前k个相关的句子 $s_{i_1}, s_{i_2}, ..., s_{i_k}$\;
+      \STATE 选择: 它们的前一句和后一句 $s_{i_1}^{prev}, s_{i_1}^{next}, ..., s_{i_k}^{prev}, s_{i_k}^{next}$\;
+      \STATE 上下文 $\gets$ 被选择的句子\;
+      % \ENDFOR
+      \FOR{$s_j \in p$}
+        \STATE \quad $sim(q, s_j) = -L^2_{dist}(E_q, E_{s_j})$\;
+      \ENDFOR
+      \STATE 选择: 前n个相关的句子 $s_{j_1}, s_{j_2}, ..., s_{j_n}$\;
+      \STATE 上下文 $\gets$ 被选择的句子\;
+      \STATE 上下文.去重().排序().字符串化()\;
+	\end{algorithmic}
 \end{algorithm}
+
+

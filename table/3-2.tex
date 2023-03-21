@@ -1,61 +1,60 @@
-\begin{table}[]
+\begin{table}[htbp]\scriptsize
     \centering
-    \caption{Two examples of three baselines' predictions and our prediction on NewsQA.}
-    \begin{tabular}{p{56pt}|p{280pt}}
-        %  \thickhline
+    \caption{NewsQA数据集上两个关于三个基线模型和CoLISA模型的预测的例子。}
+    \begin{tabular}{p{70pt}|p{320pt}}
          \hline
-         \multicolumn{2}{c}{\bfseries Example 1} \\
+         \multicolumn{2}{c}{\bfseries 例子1} \\
          \hline
-         Passage & (CNN) -- President Barack Obama spoke with Egypt's president moments after Hosni Mubarak addressed his country, telling the Egyptian that \textcolor[rgb]{1,0,0.2}{\itshape he must make good on his promises} and avoid a violent response to the thousands of protesters in the streets. (...) \\
+         文章 & (CNN) -- President Barack Obama spoke with Egypt's president moments after Hosni Mubarak addressed his country, telling the Egyptian that \textcolor[rgb]{1,0,0.2}{\itshape he must make good on his promises} and avoid a violent response to the thousands of protesters in the streets. (...) \\
+         & <译文：(...) 巴拉克·奥巴马总统在穆巴拉克发表讲话后不久与埃及总统进行了交谈，告诉埃及总统他必须履行承诺，避免对街头上万名抗议者采取暴力行动。(...) > \\
          \hline
-         Token nums & 2,036 \\
+         Token数量 & 2,036 \\
          \hline
-         Question & What did Obama say to Mubarak? \\
+         问题 & What did Obama say to Mubarak? \\
+         & <译文：奥巴马对穆巴拉克说了什么？> \\
          \hline
-         Answer & he must make good on his promises \\
+         答案 & he must make good on his promises \\
+         & <译文：他必须遵守诺言> \\
          \hline
-        %  Our pred & \textcolor[rgb]{1,0.4,0.3}{he must make good on his promises and avoid a violent response(\Checkmark)} \\
-        %  \hline
-        %  BERT's & \textcolor[rgb]{0.4,0.7,0.9}{I just spoke to him after his speech(\XSolidBrush)} \\
-        %  \hline
-        %  ALBERT's & \textcolor[rgb]{0.4,0.7,0.9}{It is very important that people have mechanisms in order(\XSolidBrush)} \\
-        %  \hline
-        %  Longformer's & \textcolor[rgb]{0.4,0.7,0.9}{he must make good on his promises and avoid a violent response(\Checkmark)} \\
-         Our pred & \textcolor[rgb]{1,0.4,0.3}{he must make good on his promises and avoid a violent response (True)} \\
+         CoLISA预测 & \textcolor[rgb]{1,0.4,0.3}{he must make good on his promises and avoid a violent response (True)} \\
+         & <译文：他必须遵守诺言并避免采取暴力行动> \\
          \hline
-         BERT's & \textcolor[rgb]{0.4,0.7,0.9}{I just spoke to him after his speech (False)} \\
+         BERT预测 & \textcolor[rgb]{0.4,0.7,0.9}{I just spoke to him after his speech (False)} \\
+         & <译文：我在他演讲结束以后跟他讲过> \\
          \hline
-         ALBERT's & \textcolor[rgb]{0.4,0.7,0.9}{It is very important that people have mechanisms in order (False)} \\
+         ALBERT预测 & \textcolor[rgb]{0.4,0.7,0.9}{It is very important that people have mechanisms in order (False)} \\
+         & <译文：人们拥有机制非常重要> \\
          \hline
-         Longformer's & \textcolor[rgb]{0.4,0.7,0.9}{he must make good on his promises and avoid a violent response (True)} \\
+         Longformer预测 & \textcolor[rgb]{0.4,0.7,0.9}{he must make good on his promises and avoid a violent response (True)} \\
+         & <译文：他必须遵守诺言并避免采取暴力行动> \\
          \hline
          \hline
-         \multicolumn{2}{c}{\bfseries Example 2} \\
+         \multicolumn{2}{c}{\bfseries 例子2} \\
          \hline
          Passage & (...) Tucked away in the verdant hills west of St. Andrews, Kingarrock Hickory Golf Course (greens fee, \$40 for nine holes and \$55 for 18) \textcolor[rgb]{1,0,0.2}{\itshape is a nine-hole, 2,022-yard country estate course that is played exclusively with antiquated equipment}. (...) \\
+         & <译文：(...) 坐落在圣安德鲁斯西部郁郁葱葱的山丘上，Kingarrock Hickory高尔夫球场（九洞的场地费为40美元，18洞的场地费为55美元）是一个九洞、2022码的乡村庄园球场，球场上全部使用古董设备打球。(...) > \\
          \hline
-         Token nums & 2,288 \\
+         Token数量 & 2,288 \\
          \hline
-         Question & What is Kingarrock Hickory? \\
+         问题 & What is Kingarrock Hickory? \\
+         & <译文：Kingarrock Hickory是什么？> \\
          \hline
-         Answer & is a nine-hole, 2,022-yard country estate course that is played exclusively with antiquated equipment \\
+         答案 & is a nine-hole, 2,022-yard country estate course that is played exclusively with antiquated equipment \\
+         & <译文：是一个九洞、2022码的乡村庄园球场，球场上全部使用古董设备打球> \\
          \hline
-        %  Our pred & \textcolor[rgb]{1,0.4,0.3}{a nine-hole, 2,022-yard country estate course that is played exclusively with antiquated equipment(\Checkmark)} \\
-        %  \hline
-        %  BERT's & \textcolor[rgb]{0.4,0.7,0.9}{the kind of place that can change the way one thinks about golf(\XSolidBrush)} \\
-        %  \hline
-        %  ALBERT's & \textcolor[rgb]{0.4,0.7,0.9}{Golf Course(\Checkmark)} \\
-        %  \hline
-        %  Longformer's & \textcolor[rgb]{0.4,0.7,0.9}{Top hotel penthouses(\XSolidBrush)} \\
-         Our pred & \textcolor[rgb]{1,0.4,0.3}{a nine-hole, 2,022-yard country estate course that is played exclusively with antiquated equipment (True)} \\
+         CoLISA预测 & \textcolor[rgb]{1,0.4,0.3}{a nine-hole, 2,022-yard country estate course that is played exclusively with antiquated equipment (True)} \\
+         & <译文：一个九洞、2022码的乡村庄园球场，球场上全部使用古董设备打球> \\
          \hline
-         BERT's & \textcolor[rgb]{0.4,0.7,0.9}{the kind of place that can change the way one thinks about golf (False)} \\
+         BERT预测 & \textcolor[rgb]{0.4,0.7,0.9}{the kind of place that can change the way one thinks about golf (False)} \\
+         & <译文：一种可以改变人们对高尔夫球看法的地方> \\
          \hline
-         ALBERT's & \textcolor[rgb]{0.4,0.7,0.9}{Golf Course (True)} \\
+         ALBERT预测 & \textcolor[rgb]{0.4,0.7,0.9}{Golf Course (True)} \\
+         & <译文：高尔夫球场> \\
          \hline
-         Longformer's & \textcolor[rgb]{0.4,0.7,0.9}{Top hotel penthouses (False)} \\
-        %  \thickhline
+         Longformer预测 & \textcolor[rgb]{0.4,0.7,0.9}{Top hotel penthouses (False)} 
+         \\
+         & <译文：顶级酒店顶层套房> \\
          \hline
     \end{tabular}
-    \label{3-2}
+    \label{tab:3-2}
 \end{table}
