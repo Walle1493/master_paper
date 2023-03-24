@@ -48,7 +48,7 @@ ThinkTwice解决长文本阅读理解的过程主要分为两个步骤。
 2.实验结果表明，对于长文本阅读理解数据集NewsQA\cite{trischler2016newsqa}，ThinkTwice方法在四个主要的预训练语言模型\cite{devlin2018bert,liu2019roberta,lan2019albert,joshi2020spanbert}中均取得了可观的性能提升。
 
 
-\section{基于检索器-阅读器二阶段架构的长文本阅读理解}
+\section{基于检索器与阅读器架构的长文本阅读理解}
 图~\ref{fig:3-1}~展示了ThinkTwice的架构，它由四个基本模块组成：
 1）一个分段器，将给定文章切割为更短的文本片段；
 2）一个检索器，筛选出与给定问题最相关的一些文本片段；
@@ -96,12 +96,12 @@ ThinkTwice解决长文本阅读理解的过程主要分为两个步骤。
 对于可能出现的特别长的文本，融合器可以直接对其进行截断。
 因此，融合器的输出可以表示为图~\ref{fig:3-1}~中的$\tilde P=<P_1,P_3,P_7>$。
 
-\subsection{基于与预训练语言模型的阅读理解模型}
+\subsection{基于预训练语言模型的阅读理解模型}
 通过以上模块，已经从原始的长文本$P$中提取了一段短文本$\tilde P$。
 本节中的阅读器模块首先将问题$Q$和上一节得到的$\tilde P$拼接成一个单独的序列$z=[CLS]Q[SEP]\tilde P[SEP]$，随后使用另一个预训练语言模型BERT\cite{devlin2018bert}作为阅读器的编码器，将输入$z$映射到一个上下文隐向量序列。
 下一步，指针网略将问题相关的文本表示的答案片段的起始和结束位置进行解码：
 \begin{equation}
-    \mathcal L_{reader} = \frac{1}{2} CrossEntropy(\hat y_s,y_s) + \frac{1}{2} CrossEntropy(\hat y_e,y_e)
+    \hat y_s,\hat y_e = PN(BERT_{qa}(z)),
 \end{equation}
 
 其中$\hat y_s$和$\hat y_e$分别表示由阅读器解码的预测答案的起始和结束位置的概率。
