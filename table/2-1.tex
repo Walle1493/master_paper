@@ -1,55 +1,68 @@
 \begin{table}[htbp]\scriptsize
     \centering
     \caption{长文本阅读理解样例}
-    \begin{tabular}{p{48pt}|p{360pt}}
-         % \hline
-         \multicolumn{2}{c}{\bfseries （1）抽取式样例} \\
-         \hline
-         文章 & (...) A high court in northern India on Friday acquitted a wealthy businessman facing the death sentence for the killing of a teen in a case dubbed ``the house of horrors.'' Moninder Singh Pandher was sentenced to death by a lower court in February. (...) \\
-          & <译文：(...) 上周五，印度北部的一家高级法院宣布无罪释放了一位被指控在一起被称为“恐怖之家”的案件中杀害一名青少年的富商，他曾被下级法院判处死刑。 Moninder Singh Pandher在二月份被下级法院判处死刑。(...) > \\
-         \hline
-         文本长度 & 644 \\
-         \hline
-         问题 & When was Pandher sentenced to death?  \\
-          & <译文：Pandher何时被判死刑？ > \\
-         \hline
-         答案 & February  \\
-          & <译文：二月 > \\
-         \hline
-         \multicolumn{2}{c}{\bfseries （2）生成式样例} \\
-         \hline
-         文章 & (...) She took off her old leather shoes and tried on the silver ones, which fitted her as well as if they had been made for her. Finally she picked up her basket. ``Come along, Toto'' she said. ``We will go to the Emerald City and ask the Great Oz how to get back to Kansas again.'' (...) \\
-          & <译文：(...) 她脱下旧皮鞋试穿上那双银鞋，它们非常适合她，好像是为她量身定制的一样。最后她拿起篮子，“走吧，托托，”她说，“我们去祖母城问伟大的奥兹怎样才能回到堪萨斯。” (...) > \\
-         \hline
-         文本长度 & 32,655 \\
-         \hline
-         问题 & Why does Dorothy want to go home? \\
-          & <译文：为什么Dorothy想要回家？> \\
-         \hline
-         答案 & Because she misses her family and friends.  \\
-          & <译文：因为她想念她的家人和朋友。> \\
-         \hline
-         \multicolumn{2}{c}{\bfseries （3）多项选择样例} \\
-         \hline
-         文章 & (...) ``The Adventure of the Speckled Band'' is one of the 56 short Sherlock Holmes stories written by Sir Arthur Conan Doyle. It was first published in 1892. The story tells how Sherlock Holmes and Dr. Watson investigate the mysterious death of Julia Stoner, the sister of their client Helen Stoner, at Stoke Moran Manor. (...) \\
-          & <译文：(...) 《斑点带的冒险》是由亚瑟·柯南·道尔爵士所写的56个短篇福尔摩斯侦探小说之一，首次出版于1892年。故事讲述了福尔摩斯和华生博士调查客户海伦·斯通纳的姐姐朱莉娅·斯通纳在斯托克·莫兰庄园的神秘死亡事件。 (...) > \\
-         \hline
-         文本长度 & 6,633 \\
-         \hline
-         问题 & Why did Roylott want to kill Helen?  \\
-          & <译文：(...) 为什么Roylott想杀死Helen？ (...) > \\
-         \hline
-         选项 & A. Because he wanted to inherit their mother’s fortune \\ 
-         & <译文：因为他想要继承他们母亲的财产。> \\
-          & B. Because he wanted to marry Helen; \\
-          & <译文：因为他想和Helen结婚。> \\
-          & C. Because he wanted to sell Helen to a circus; \\
-          & <译文：因为他想把Helen卖到马戏团。> \\
-          & D. Because he wanted to use Helen for experiments. \\
-          & <译文：因为他想用Helen做实验。> \\
-         \hline
-         答案 & A \\
-         \hline
+    \begin{tabular}{p{408pt}}
+        % \hline
+        %  \multicolumn{2}{c}{\bfseries （1）抽取式样例} \\
+        \hline
+        \multicolumn{1}{c}{\bfseries （1）抽取式样例} \\
+        \hline
+        文章： \\
+        (...) A high court in northern India on Friday acquitted a wealthy businessman facing the death sentence for the killing of a teen in a case dubbed ``the house of horrors.'' Moninder Singh Pandher was sentenced to death by a lower court in February. (...) \\
+        <译文：(...) 上周五，印度北部的一家高级法院宣布无罪释放了一位被指控在一起被称为“恐怖之家”的案件中杀害一名青少年的富商，他曾被下级法院判处死刑。 Moninder Singh Pandher在二月份被下级法院判处死刑。(...) > \\
+        \hline
+        文本长度：644 \\
+        \hline
+        问题: \\
+        When was Pandher sentenced to death?  \\
+        <译文：Pandher何时被判死刑？ > \\
+        \hline
+        答案：\\
+        February  \\
+        <译文：二月 > \\
+        \hline
+        %  \multicolumn{2}{c}{\bfseries （2）生成式样例} \\
+        \multicolumn{1}{c}{\bfseries （2）生成式样例} \\
+        \hline
+        文章： \\
+        (...) She took off her old leather shoes and tried on the silver ones, which fitted her as well as if they had been made for her. Finally she picked up her basket. ``Come along, Toto'' she said. ``We will go to the Emerald City and ask the Great Oz how to get back to Kansas again.'' (...) \\
+        <译文：(...) 她脱下旧皮鞋试穿上那双银鞋，它们非常适合她，好像是为她量身定制的一样。最后她拿起篮子，“走吧，托托，”她说，“我们去祖母城问伟大的奥兹怎样才能回到堪萨斯。” (...) > \\
+        \hline
+        文本长度：32,655 \\
+        \hline
+        问题：\\
+        Why does Dorothy want to go home? \\
+        <译文：为什么Dorothy想要回家？> \\
+        \hline
+        答案：\\
+        Because she misses her family and friends.  \\
+        <译文：因为她想念她的家人和朋友。> \\
+        \hline
+        %  \multicolumn{2}{c}{\bfseries （3）多项选择样例} \\
+        \multicolumn{1}{c}{\bfseries （3）多项选择样例} \\
+        \hline
+        文章：\\
+        (...) ``The Adventure of the Speckled Band'' is one of the 56 short Sherlock Holmes stories written by Sir Arthur Conan Doyle. It was first published in 1892. The story tells how Sherlock Holmes and Dr. Watson investigate the mysterious death of Julia Stoner, the sister of their client Helen Stoner, at Stoke Moran Manor. (...) \\
+        <译文：(...) 《斑点带的冒险》是由亚瑟·柯南·道尔爵士所写的56个短篇福尔摩斯侦探小说之一，首次出版于1892年。故事讲述了福尔摩斯和华生博士调查客户海伦·斯通纳的姐姐朱莉娅·斯通纳在斯托克·莫兰庄园的神秘死亡事件。 (...) > \\
+        \hline
+        文本长度：6,633 \\
+        \hline
+        问题： \\
+        Why did Roylott want to kill Helen?  \\
+        <译文：(...) 为什么Roylott想杀死Helen？ (...) > \\
+        \hline
+        选项：\\
+        A. Because he wanted to inherit their mother’s fortune \\ 
+        <译文：因为他想要继承他们母亲的财产。> \\
+        B. Because he wanted to marry Helen; \\
+        <译文：因为他想和Helen结婚。> \\
+        C. Because he wanted to sell Helen to a circus; \\
+        <译文：因为他想把Helen卖到马戏团。> \\
+        D. Because he wanted to use Helen for experiments. \\
+        <译文：因为他想用Helen做实验。> \\
+        \hline
+        答案：A \\
+        \hline
     \end{tabular}
     \label{tab:2-1}
 \end{table}

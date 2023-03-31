@@ -1,22 +1,25 @@
 % !Mode:: "TeX:UTF-8"
 
 \begin{eabstract}
-	Syntactic parsing is one of the most important intermediate processes in sentence comprehension,
-	and probability estimation has always been a core problem in the parsing field.
-	However, in either deep learning (DL) era or pre-DL era, there exist very few works based on global probabilistic modeling, mainly due to the high complexity of tree-structure CRF (TreeCRF) inference.
-	This thesis proposes to apply TreeCRF to both dependency parsing and constituency parsing.
-	The key idea to solve the inefficiency issue is to batchify the inference algorithm for tree structures, and meanwhile avoid the complex Outside algorithm via back-propagation.
-	Currently, parsing models are greatly simplified, and it's a trend to adopt local loss for syntactic parsing.
-	In contrast, we propose a high-order extension to first-order models.
-	While high-order modeling further increases the algorithm complexity, we also try to apply mean field variational inference (MFVI) as an alternative to exact inference of TreeCRF method, which greatly improves the parsing efficiency.
+
+	This study aims to explore machine reading comprehension technology for long texts, which enables computer programs to automatically read long text information and understand it in a way similar to humans, and then answer related questions. This technology is an important research direction in the field of natural language processing and has played an important role in many application scenarios, such as intelligent Q\&A, text summarization, machine translation, and knowledge graph construction.
+	
+	With the rapid development of Internet technology, people are facing more and more text information, including news reports and academic papers. In order to obtain the required information more quickly and accurately, long-text machine reading comprehension technology has emerged and gradually become a research hotspot. Long-text reading comprehension technology involves multiple sub-tasks such as text segmentation, key information extraction, and logical reasoning. To complete these tasks, various natural language processing technologies such as sliding windows and sequence labeling need to be used. However, long-text reading comprehension also faces some challenges. First of all, there are a large number of logical relationships across sentences and paragraphs in long texts, such as conditional relationships and progressive relationships. These relationships require cross-sentence and cross-paragraph reasoning to correctly understand the meaning of the text. Secondly, reading and understanding long texts requires a lot of computing resources and time consumption. Therefore, how to improve efficiency while ensuring accuracy is also a difficult point.
+	
+	First of all, based on the most important news long-text corpus NewsQA in the current field, this article proposes a two-stage architecture based on retriever and reader. This method is based on pre-trained language models to realize relevance retrieval between questions and text fragments, as well as sequence labeling to extract answer text fragments.
+	
+	Second, existing long-text reading comprehension architectures usually only use retrieval methods to obtain key information. This article takes a different approach by experimenting with multi-hop reading comprehension dataset MuSiQUe to propose a generative method that converts multi-hop questions into multiple single-hop sub-questions and extracts key text paragraphs and answer fragments for each sub-question with the help of reading comprehension models in turn.
+	
+	Finally, for the long-text multiple-choice corpus QuALITY where there is a correlation between the text and multiple candidate answers, this article uses a dense retriever pointed by questions and candidate answers to retrieve key information. At the same time, this article uses contrastive learning and an improved sample self-attention mechanism to more accurately represent the semantics of candidate answers in order to solve the close relationship and differences between candidate answers.
+	
+	The purpose of this study is to explore methods for machine reading comprehension of long texts. Through extracting key information, interaction between candidate answers, and multi-hop question decomposition from multiple perspectives, this article proposes three solutions. By conducting experiments on multiple open-source datasets such as NewsQA, QuALITY, MuSiQue etc., this article's methods have achieved significant evaluation index improvements which indicates that it has certain practical value in long-text reading comprehension.
 
 	\vskip 21bp
 	{\bf\zihao{-4} Key words: }
-	Syntactic Parsing,
-	Dependency Parsing,
-	Constituency Parsing,
-	TreeCRF,
-	Variational Inference
+	Machine Reading Comprehension,
+	Long Text,
+	Dense Passage Retrieval,
+	Question Decomposition
 \end{eabstract}
 
 \begin{flushright}

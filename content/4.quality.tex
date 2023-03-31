@@ -49,22 +49,21 @@ CoLISA主要通过对比学习的方式，将两个正确选项的表示拉近�
 选项集合可以定义为$O=[o_1, o_2, ..., o_r]$，其中$o_i=[w^o_1, w^o_2, ..., w^o_k]$表示第$i$个选项，$w^o_k$表示$o_i$中第$k$个词。
 MC-RC的目标是最大化所预测选项的概率：
 \begin{equation}
-    a = \argmax_i(\mathcal P(o_i|p,q)).
+    a = \argmax_i(\mathcal P(o_i|p,q))
 \end{equation}
 
 当$p$的长度超过编码器的最大输入长度时，本章的做法是通过检索与问题和备选答案相关的句子，将长文本压缩成篇幅较短的文本。
 较短文本表示为$c=[s^c_1, s^c_2, ..., s^c_m]$，其中$s^c_i=[w^s_1, w^s_2, ..., w^s_l]$表示$c$中的第$i$个句子，$w^s_j$表示$s^c_i$中的第$i$个句子。
 
 \subsection{总体架构}
-
-\input{figure/4-1.tex}
-
 如图~\ref{fig:4-1}~所示，本章提出了一种新颖的MC-RC框架，它充分运用了对比学习和样本内注意力（Contrastive Learning and In-Sample Attention, CoLISA），主要由两部分组成：
 首先是基于DPR（Dense Passage Retrieval，稠密检索）的检索器，在一篇很长的文章中，根据对给定问题和对应的过个备选答案之间的相关性，筛选出相关的句子，以此来根据原文的原始顺序来构建一段新的文本；
 另外，CoLISA阅读器需要根据给定问题和上下文中，从若干选答案中预测出最终答案。
 CoLISA阅读器由两部分组成。
 第一部分是样本内注意力（In-Sample Attention, ISA）机制，换句话说，引入一个加入了多头自注意力机制并针对长序列的网络，来增强特定样本中多个选项之间的交互。
 第二部分是对比学习（Contrastive Learning，CoL）以及一个干扰因子（Distractive Factor，DiF），来表示由上下文、问题和备选答案组合而成的序列。
+
+\input{figure/4-1.tex}
 
 \subsection{基于DPR的检索器}
 为了从一篇长文本中筛选出相关的句子，本节首先采用基于DRP（Dense Passage Retrieval，稠密检索）的句子检索器。
@@ -102,23 +101,23 @@ $s$和$r$的$[CLS]$token的全局表示用于计算它们的负欧几里得距�
 具体来说，利用平凡的自注意力机制的架构，同时将序列$X$分解为三个矩阵$Q$，$K$，$V$。
 输出的自注意力矩阵可以计算为：
 \begin{equation}
-    SA(Q,K,V)=softmax(\frac {QK^T}{\sqrt{d_k}})V,
+    SA(Q,K,V)=softmax(\frac {QK^T}{\sqrt{d_k}})V
 \end{equation}
 其中$d_k$是一个缩放因子，它表示$K$的维度，以防引起梯度消失现象\cite{vaswani2017attention}。
 更进一步，多头注意力机制被引入到ISA中，从不同的向量维度来更加综合性的表示$X$。
 多头自注意力的流程可以定义为：
 \begin{align}
-    & head_i = SA(QW^Q_i,KW^K_i,VW^V_i), \\
-    & H = Concat(head_1,...,head_h), \\
-    & MSA(Q,K,V) = HW^O,
+    & head_i = SA(QW^Q_i,KW^K_i,VW^V_i) \\
+    & H = Concat(head_1,...,head_h) \\
+    & MSA(Q,K,V) = HW^O
 \end{align}
 其中$h$表示各个平行注意力头的数量，$W^Q_i,W^K_i,W^V_i,W^O$是注意力参数矩阵。
 这里还将多头自注意力的向量表示记为$X_{att}$。
-如图~\ref{4-1}~中的ISA机制所描述的，作用在拼接后的序列$X$的注意力机制通过计算选项之间的表示$X_{att}$，实现彼此之间的交互。
+如图~\ref{fig:4-1}~中的ISA机制所描述的，作用在拼接后的序列$X$的注意力机制通过计算选项之间的表示$X_{att}$，实现彼此之间的交互。
 
 此外，为了避免多头自注意力输出的塌陷\cite{vaswani2017attention,sukhbaatar2019augmenting}，多头自注意力机制后面还增加了一个全连接网络：
 \begin{equation}
-    X_{ffn}=FFN(X_{att}).
+    X_{ffn}=FFN(X_{att})
 \end{equation}
 这里使用了GeLU\cite{hendrycks2016gaussian}函数作为激活函数。
 最终，$X_{fnn}$需要根据多个输入三元组$x_i$的维度拆解为多个表示。
@@ -146,7 +145,7 @@ $s$和$r$的$[CLS]$token的全局表示用于计算它们的负欧几里得距�
 
 CoL的损失函数定义如下：
 \begin{equation}
-    \mathcal L_{CoL}=-\frac{1}{N}\Sigma^N_{j=1}\log \frac{e^{sim(x^{(1)}_+,x^{(2)}_+)/ \tau}}{\Sigma^S_{i=1} e^{sim(x^{(1)}_+,x^{(2)}_i)/ \tau}},
+    \mathcal L_{CoL}=-\frac{1}{N}\Sigma^N_{j=1}\log \frac{e^{sim(x^{(1)}_+,x^{(2)}_+)/ \tau}}{\Sigma^S_{i=1} e^{sim(x^{(1)}_+,x^{(2)}_i)/ \tau}}
 \end{equation}
 其中$x^{(1)}_+$是$X^{(1)}$中包含正确答案的三元组的编码表示，而$x^{(2)}_i$是$X^{(2)}$中所有三元组的表示，$X^{(2)}$中的$x^{(2)}_+$是正例样本，$\tau$是可配置的超参数，温度系数。
 $sim(\cdot)$是一种相似度指标（本章中所有的实验都是使用余弦相似度函数），$S$代表了每个样本中三元组的数目，$N$代表了batch的大小。
@@ -160,19 +159,19 @@ QuALITY的数据标注人员针对每个问题的所有错误选项中，把误�
 然后再用一个softmax函数来帮助缩放$\Theta$，从而更明显的区分每个$\theta_i$。
 每个$\theta_i$被修正为如下的形式：
 \begin{equation}
-    \theta_i=\frac{e^{\theta_i}}{\Sigma^n_i e^{\theta_i}}.
+    \theta_i=\frac{e^{\theta_i}}{\Sigma^n_i e^{\theta_i}}
 \end{equation}
 幂运算可以清晰的却分$n$个系数$\theta_i$。
 当计算对比损失的时候，$\theta_i$乘上了它对应选项的相似度的值，来衡量正确答案和干扰答案的差距。
 $\theta_i$的值越大，对对应选项贡献的损失就越多。
 经过上述分析，对比损失函数可以改进为如下：
 \begin{equation}
-    \mathcal L_{CoL}=-\frac{1}{N}\Sigma^N_{j=1}log \frac{\theta_+e^{sim(x^{(1)}_+,x^{(2)}_+)/ \tau}}{\Sigma^S_{i=1} \theta_ie^{sim(x^{(1)}_+,x^{(2)}_i)/ \tau}},
+    \mathcal L_{CoL}=-\frac{1}{N}\Sigma^N_{j=1}log \frac{\theta_+e^{sim(x^{(1)}_+,x^{(2)}_+)/ \tau}}{\Sigma^S_{i=1} \theta_ie^{sim(x^{(1)}_+,x^{(2)}_i)/ \tau}}
 \end{equation}
 其中$\theta_+$和$\theta_i$分别对应样本中的正例以及第$i$个选项。
 最终的损失函数可以表示为：
 \begin{equation}
-    \mathcal L=\alpha \cdot \mathcal L_{MC-RC}+(1-\alpha) \cdot \mathcal L_{CoL},
+    \mathcal L=\alpha \cdot \mathcal L_{MC-RC}+(1-\alpha) \cdot \mathcal L_{CoL}
 \end{equation}
 其中$\alpha \in[0,1]$是一个平衡系数。
 
@@ -225,11 +224,8 @@ $\theta_i$的值越大，对对应选项贡献的损失就越多。
 \end{itemize}
 
 \subsection{实验结果和分析}
-
-\input{table/4-3.tex}
-
 本节对CoLISA模型与两个QuALITY上强力的基线模型进行比较，以及RACE上三个预训练语言模型进行比较进行分析。
-总体而言，表~\ref{tab:4-3}~所示的结果表明，CoLISA模型优于其他所有模型。
+总体而言，表~\ref{tab:4-3}~所示的结果表明\footnote{本节在QuALITY数据集上进行了DPR和DeBERTaV3架构基线的重新实现（标有*），表现明显优于QuALITY原文中的记录（53.6/47.4）。DeBERTaV3-large的结果也是如此。而其他基线结果则来自相关研究或相关排行榜。在RACE数据集上的实验不需要基于DPR的检索器和干扰因素。在训练过程中，QuALITY数据集中的模型是中间经过RACE数据集训练并在QuALITY上进行微调的。}，CoLISA模型优于其他所有模型。
 其中，Longformer模型的性能不佳，这说明Longformer模型在处理冗长的源文本时无法准确定位关键信息。
 这可能是由于长文本预训练语言模型需要更多的训练数据，而QuALITY提供的训练数据十分有限所致。
 此外，QuALITY中文本的长度仍超过了Longformer模型的最大编码长度限制，这可能会导致关键信息的丢失。
@@ -238,14 +234,15 @@ $\theta_i$的值越大，对对应选项贡献的损失就越多。
 同时，将ISA机制引入DeBERTaV3编码器之后，可以持续增强模型的性能表现。
 这种尝试意味着，用ISA风格的方式在多个选项之间进行内部交互，将进一步捕捉到所有备选答案之间的差异关系。
 
-\subsection{实验分析}
+\input{table/4-3.tex}
 
-\input{table/4-4.tex}
-
-\noindent \textbf{对比学习。}
+\subsection{消融实验}
+\textbf{对比学习。}
 为了有效评估CoL模块对整个模型表现的影响，本节进行了一个消融实验，具体如表~\ref{tab:4-4}~中的第一列所示。
 首先，在抛弃ISA模块的情况下，可以评估仅使用对比学习方法对模型整体性能的影响。
 实验结果表明，相比于基线模型（即表中前三列DPR \& DeBERTaV3-large的架构），单独使用CoL组件的方法显著提升了模型性能。
+
+\input{table/4-4.tex}
 
 对于基于DPR的检索器，CoL组件将问题和多个备选答案都作为查询词，从参考文章中抽取上下文。
 相比之下，仅使用问题作为查询词会导致性能大幅下降。

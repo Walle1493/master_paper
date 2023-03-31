@@ -1,22 +1,20 @@
 \begin{table}[htbp]\scriptsize
     \centering
+    \caption{QuALITY数据集的开发集上，关于对比学习模块，干扰因子，样本内注意力机制的消融实验}
     \begin{tabular}{ll|ll|ll|ll}
     \hline
-    {\bfseries 模型} & {\bfseries ACC} & {\bfseries 模型} & {\bfseries ACC} & {\bfseries 模型} & {\bfseries ACC} & {\bfseries 模型} & {\bfseries ACC} \\
+    模型 & ACC & 模型 & ACC & 模型 & ACC & 模型 & ACC \\
     \hline
     基线 & 56.7 & 基线 & 56.7 & 基线 & 56.7 & 基线 & 39.6 \\
     \hline
     CoL & {\bfseries 60.1} & CoL & 60.1 & CoL & 60.1 & CoL & {\bfseries 40.8} \\
     \hline
-    $\ $ 用问题作为检索 & 58.9 & $\ $ 应用干扰因子 & {\bfseries 60.9} & $\ $ 应用自注意力 & 60.4 & $\ $ 应用样本内负例 & 37.1 \\
-    $\ $ 应用样本内负例 & 59.4 & $\ $ 应用KL损失 & 57.0 & $\ \ $ 上下文遮蔽 & 60.4 & \\
-    & & & & $\ $ 应用transformer & {\bfseries 61.0} & & \\
-    & & & & $\ $ 应用两层transformer & 60.8 & & \\
-    & & & & $\ $ 应用改动的transformer & 58.9 & & \\
+    用问题作为检索 & 58.9 & 应用干扰因子 & \underline{60.9} & 应用自注意力 & 60.4 & 应用样本内负例 & 37.1 \\
+    应用样本内负例 & 59.4 & 应用KL损失 & 57.0 & 上下文遮蔽 & 60.4 & \\
+    & & & & 应用transformer & \underline{61.0} & & \\
+    & & & & 应用两层transformer & 60.8 & & \\
+    & & & & 应用改动的transformer & 58.9 & & \\
     \hline
     \end{tabular}
-    \caption{\label{tab:4-4}
-    QuALITY数据集的开发集上，关于对比学习模块，干扰抑制，样本内注意力机制的消融实验。
-    % Ablation study on contrastive learning module, distractive factor, and in-sample attention mechanism on the development set of QuALITY.
-    }
+    \label{tab:4-4}
 \end{table}

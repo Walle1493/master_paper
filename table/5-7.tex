@@ -1,0 +1,31 @@
+\begin{table}[htbp]
+    \centering
+    \caption{SeqDecomposer和StepDecomposer的实验性能}
+    \begin{tabular}{lcccc}
+    \hline
+    模型 & 支持 F1 & 支持 EM & 答案 F1 & 答案 EM \\
+    \hline
+    % \multicolumn{5}{c}{基线} \\
+    \multicolumn{5}{l}{基线} \\
+    % \hline
+    RoBERTa-large \& Longformer-large & 75.2 & - & \underline{52.3} & - \\
+    \hline
+    % \multicolumn{5}{c}{SeqDecomposer} \\
+    \multicolumn{5}{l}{SeqDecomposer模型} \\
+    % \hline
+    DeBERTaV3 \& DeBERTaV3 & 80.2 & 49.9 & 49.6 & 39.8 \\
+    DeBERTaV3 \& ALBERT & 80.5 & 50.7 & 48.6 & 38.1 \\
+    ALBERT \& DeBERTaV3 & 81.8 & 51.1 & \underline{50.8} & \underline{41.1} \\
+    ALBERT \& ALBERT & \underline{81.9} & \underline{51.8} & 49.7 & 39.6 \\
+    \hline
+    % \multicolumn{5}{c}{StepDecomposer} \\
+    \multicolumn{5}{l}{StepDecomposer模型} \\
+    % \hline
+    DeBERTaV3 \& DeBERTaV3 & 82.7 & 56.1 & 50.7 & \underline{42.1} \\
+    DeBERTaV3 \& ALBERT & 83.0 & \underline{57.8} & \underline{50.8} & 40.3 \\
+    ALBERT \& DeBERTaV3 & 83.0 & 56.7 & 50.2 & 41.6 \\
+    ALBERT \& ALBERT & \underline{83.1} & 56.3 & 50.1 & 39.9 \\
+    \hline
+    \end{tabular}
+    \label{tab:5-7}
+\end{table}

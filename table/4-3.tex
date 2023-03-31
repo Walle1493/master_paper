@@ -1,10 +1,11 @@
 \begin{table}[htbp]\scriptsize
     \centering
+    \caption{QuALITY（全部/困难）和RACE（中考/高考）数据集上，开发集和测试集的ACC实验结果}
     \begin{tabular}{lcccc}
     % \thickhline
     \hline
-         & \multicolumn{2}{c}{\bfseries QuALITY} & \multicolumn{2}{c}{\bfseries RACE} \\
-    {\bfseries 模型} & {\bfseries 开发集} & {\bfseries 测试集} & {\bfseries 开发集} & {\bfseries 测试集} \\
+    & \multicolumn{2}{c}{\bfseries QuALITY} & \multicolumn{2}{c}{\bfseries RACE} \\
+    模型 & 开发集 & 测试集 & 开发集 & 测试集 \\
     \hline
     Longformer-base \cite{beltagy2020longformer} & 38.1/32.8 & 39.5/35.3 & - & - \\
     DPR \& DeBERTaV3-large \cite{pang2021quality} & 56.7*/48.6* & 55.4/46.1 & - & - \\
@@ -23,8 +24,6 @@
     % \thickhline
     \hline
     \end{tabular}
-    \caption{\label{tab:4-3}
-    QuALITY（全部/困难）和RACE（中考/高考）数据集上，开发集和测试集的ACC实验结果。本节在QuALITY数据集上进行了DPR和DeBERTaV3架构基线的重新实现（标有*），表现明显优于QuALITY原文中的记录（53.6/47.4）。DeBERTaV3-large的结果也是如此。而其他基线结果则来自相关研究或相关排行榜。在RACE数据集上的实验不需要基于DPR的检索器和干扰因素。在训练过程中，QuALITY数据集中的模型是中间经过RACE数据集训练并在QuALITY上进行微调的。
-    }
+    \label{tab:4-3}
 \end{table}
 
