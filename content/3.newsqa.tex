@@ -21,7 +21,7 @@ ThinkTwice解决长文本阅读理解的过程主要分为两个步骤。
 预训练语言模型采用多层Transformer架构和自注意力机制\cite{vaswani2017attention}，已经取得了显著的成果。
 
 尽管现有的机器阅读理解系统（以及其他自然语言处理系统）在短文本领域中取得了成功，但由于预训练语言模型所能容纳的文本长度限制\footnote{例如，BERT的最大位置词嵌入长度为512。}，这些系统仍然不善于有效地处理长序列。
-同时，如果仅仅是增加输入长度，模型的复杂度（$O(n^2)$）也将呈现平方级的增长，这会导致维度爆炸现象的出现。
+同时，如果仅仅是增加输入长度，以BERT为代表的大多数模型的计算复杂度也将呈现平方级的增长（$O(n^2)$），这会导致维度爆炸现象的出现。
 
 在处理长文本时，最直观的方法是截断\cite{rajpurkar2016squad,xie2019unsupervised}和滑动窗口\cite{joshi2019bert}。
 截断方法将长文本截断为模型所能接受的长度，而滑动窗口方法将文章划分为若干个固定长度的片段，并对每个片段预测答案。
@@ -70,7 +70,7 @@ ThinkTwice解决长文本阅读理解的过程主要分为两个步骤。
 当人们需要从大量文本中寻找答案时，通常会选择保留与当前问题最相关的文本片段，并过滤掉琐碎的信息。
 受到这种人类行为的启发，本文提出了一个基于预训练语言模型的检索器，来选择最有可能回答问题的最重要的文本片段。
 
-具体而言，检索器部分首先将问题$Q$和每个文本片段$\{P_i\}^n_{i=1}$组合成多个序列$\{x_i\}^n_{i=1}$，其中$x_i=[CLS]Q[SEP]P_i[SEP]$\footnote{[CLS]和[SPE]是特殊token。前者对于编码后的输入序列，理论上可以表示整体信息；后者主要用于分隔输入序列}。
+具体而言，检索器部分首先将问题$Q$和每个文本片段$\{P_i\}^n_{i=1}$组合成多个序列$\{x_i\}^n_{i=1}$，其中$x_i=[CLS]Q[SEP]P_i[SEP]$\footnote{[CLS]和[SEP]是特殊token。前者对于编码后的输入序列，理论上可以表示整体信息；后者主要用于分隔输入序列}。
 然后，检索器的编码器部分，也就是预训练语言模型，用于将输入$x_i$编码成整个序列的上下文词嵌入表示$H_i$：
 \begin{equation}
     H_i = BERT_{cls}(x_i)
@@ -149,8 +149,10 @@ ThinkTwice解决长文本阅读理解的过程主要分为两个步骤。
     \item Match-LSTM\cite{wang2015learning}。该模型使用了两个单向的LSTM来编码问题和文章。
     \item BiDAF\cite{seo2016bidirectional}。BIDAF的核心思想是其中的双流注意力层，双流注意力分别计算上下文之于问题的注意力以及问题之于上下文的注意力。
     \item AMANDA\cite{kundu2018question}。AMANDA针对答案抽取提出了一种端到端的专注于问题的多因子注意力网络。多因子注意力编码聚合了位于多个句子中有意义的事实。
+    \item ASGen\cite{Back2021LearningTG}。ASGen使用一个神经网络模型来预测给定句子中最可能包含答案的子串，并将其转换为问题形式。
     \item DecaProp\cite{tay2018densely}。该模型把自注意力网络整合进RNN模\cite{mikolov2010recurrent}型。
     \item Longformer\cite{beltagy2020longformer}。该预训练语言模型使用了稀疏注意力矩阵，来解决序列长度的限制。
+    \item DyREX\cite{Zaratiana2022DyRExDQ}。DyREX在抽取式问答中融入了动态查询表示方法。
     \item CogLTX\cite{ding2020cogltx}。CogLTX架构通过判别多个句子间的相关性来识别重要句子。
 \end{itemize}
 

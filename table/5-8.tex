@@ -1,0 +1,65 @@
+\begin{table}[htbp]\scriptsize
+    \centering
+    \caption{问题分解案例分析}
+    \begin{tabular}{p{408pt}}
+        \hline
+        \multicolumn{1}{c}{\bfseries 2跳问题} \\
+        \hline
+        多跳问题：\\
+        Who founded the company that distributed the film UHF? <译文：谁创立了发行电影UHF的公司？ > \\
+        \hline
+        Bart-Large生成结果： \\
+        UHF >> distributed by <译文：UHF >> 由...发行 > \\
+        \#1 >> founded by <译文：\#1 >> 由...创立 > \\
+        \hline
+        T5-Large生成结果： \\
+        UHF >> distributor <译文：UHF >> 发行人 > \\
+        \#1 >> founded by <译文：\#1 >> 由...创立 > \\
+        \hline
+        参考答案： \\
+        UHF >> distributed by <译文：UHF >> 由...发行 > \\
+        \#1 >> founded by <译文：\#1 >> 由...创立 > \\
+        \hline
+        \multicolumn{1}{c}{\bfseries 3跳问题} \\
+        \hline
+        多跳问题：\\
+        What is the birthplace of the man who does the voice of Stan on the series that includes the episode The Hobbit? \\
+        <译文：在包括“霍比特人”一集的系列中为斯坦配音的人的出生地是哪里？ > \\
+        \hline
+        Bart-Large生成结果： \\
+        The Hobbit >> part of the series <译文：“霍比特人” >> 剧集的一部分 > \\
+        who does the voice of stan on the \#1 episode the hobbit <译文：谁为剧集\#1“霍比特人”中的斯坦配音 > \\
+        \#2 >> place of birth <译文：\#2 >> 出生地 > \\
+        \hline
+        T5-Large生成结果： \\
+        Stan on The Hobbit >> voice actor <译文：“霍比特人”中的斯坦 >> 配音演员 > \\
+        \#1 >> place of birth <译文：\#1 >> 出生地 > \\
+        \hline
+        参考答案： \\
+        The Hobbit >> part of the series <译文：“霍比特人” >> 剧集的一部分 > \\
+        who does the voice of stan on \#1 <译文：谁为\#1中的斯坦配音 > \\
+        \#2 >> place of birth <译文：\#2 >> 出生地 > \\
+        \hline
+        \multicolumn{1}{c}{\bfseries 4跳问题} \\
+        \hline
+        多跳问题：\\
+        What were the Genesis's advantages over the platform with a three letter abbreviation, that had a video game named after the league in charge of the Super Bowl halftime show? <译文：Genesis相对于那个有着三个字母缩写名称，且有一个以主持超级碗中场表演的联盟命名的视频游戏的平台，有哪些优势？ > \\
+        \hline
+        Bart-Large生成结果： \\
+        who is in charge of the halftime show <译文：中场表演由谁负责 > \\
+        what is the abbreviation for the \#1 league <译文：\#1联盟的缩写是什么 > \\
+        What was the Genesis's advantage over \#2 <译文：Genesis在\#2上的优势是什么 > \\
+        \hline
+        T5-Large生成结果： \\
+        What league was in charge of the Super Bowl halftime show? <译文：超级碗中场表演由什么联盟负责？ > \\
+        Genesis >> advantages over \#2 >> advantages <译文：Genesis >> 在\#2上的优势 >> 优势 > \\
+        \hline
+        参考答案： \\
+        who is in charge of the super bowl halftime show <译文：超级碗中场表演由谁负责 > \\
+        \#1 >> platform <译文：\#1 >> 平台 > \\
+        What is the abbreviation of \#2? <译文：\#2的缩写是什么？ > \\
+        What were the Genesis's advantages over the \#3? <译文：Genesis在\#3上的优势是什么？ > \\
+        \hline
+    \end{tabular}
+    \label{tab:5-8}
+\end{table}
